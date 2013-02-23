@@ -6,13 +6,13 @@ class AppDelegate
 
     # Nav controllers are dumb.
     @window = UIWindow.alloc.initWithFrame(CGRectOffset(UIScreen.mainScreen.applicationFrame, 0.0, -20.0))
-    petitions_controller = PetitionsController.alloc.initWithStyle(UITableViewStylePlain)
+    petitionsController = PetitionsController.alloc.initWithStyle(UITableViewStylePlain)
 
-    @nav_controller = UINavigationController.alloc.initWithRootViewController(petitions_controller)
-    @nav_controller.navigationBar.tintColor = UIColor.colorWithRed(0.1, green:0.2, blue:0.6, alpha:0.3)
-    petitions_controller.nav_controller = @nav_controller
+    @navController = UINavigationController.alloc.initWithRootViewController(petitionsController)
+    @navController.navigationBar.tintColor = UIColor.colorWithRed(0.1, green:0.2, blue:0.6, alpha:0.3)
+    petitionsController.navController = @navController
 
-    @window.rootViewController = nav_controller
+    @window.rootViewController = navController
     @window.makeKeyAndVisible
 
     true
