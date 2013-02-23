@@ -1,0 +1,28 @@
+PATH
+  remote: /Users/jeremymcanally/code/we_the_people
+  specs:
+    we_the_people (0.0.2)
+      active_support
+      json
+      rest-client
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    active_support (3.0.0)
+      activesupport (= 3.0.0)
+    activesupport (3.0.0)
+    bubble-wrap (1.1.5)
+    json (1.7.7)
+    mime-types (1.21)
+    motion_support (0.0.6)
+      bubble-wrap
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  motion_support
+  we_the_people!
