@@ -14,12 +14,12 @@ class SignaturesController < RefreshableTableViewController
 
     view.dataSource = view.delegate = self
 
-    get_signatures
+    getSignatures
 
     @callbacks[:infinite_scroll] = lambda { get_signatures }
   end
 
-  def get_signatures
+  def getSignatures
     Dispatch::Queue.concurrent.async do 
       @cursor.next_page
       @signatures = @cursor.all
