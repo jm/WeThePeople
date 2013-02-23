@@ -39,7 +39,7 @@ class PetitionCell < UITableViewCell
 
   def self.heightForPetition(petition, width)
     constrain = CGSize.new(width, 1000)
-    size = petition.title.sizeWithFont(UIFont.systemFontOfSize(MessageFontSize), constrainedToSize:constrain)
+    size = petition.title.sizeWithFont(UIFont.systemFontOfSize(14), constrainedToSize:constrain)
     [57, size.height + 8].max
   end
 end

@@ -35,7 +35,7 @@ class SignatureCell < UITableViewCell
   def self.heightForSignature(signature, width)
     constrain = CGSize.new(width, 1000)
 
-    size = signatureString(signature).sizeWithFont(UIFont.systemFontOfSize(MessageFontSize), constrainedToSize:constrain)
+    size = signatureString(signature).sizeWithFont(UIFont.systemFontOfSize(14), constrainedToSize:constrain)
     [57, size.height + 8].max
   end
 end
