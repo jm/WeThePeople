@@ -51,12 +51,12 @@ class PetitionsController < RefreshableTableViewController
   end
 
   def tableView(tableView, heightForRowAtIndexPath:indexPath)
-    PetitionCell.heightForPetition(@petitions[indexPath.row], tableView.frame.size.width)
+    PetitionCell.heightForContent(@petitions[indexPath.row].title, tableView.frame.size.width)
   end
 
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
     petition = @petitions[indexPath.row]
-    PetitionCell.cellForPetition(petition, inTableView:tableView)
+    PetitionCell.cellFor(petition, inTableView:tableView)
   end
 
   def tableView(tableView, didSelectRowAtIndexPath:indexPath)

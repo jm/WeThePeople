@@ -41,12 +41,12 @@ class SignaturesController < RefreshableTableViewController
   end
 
   def tableView(tableView, heightForRowAtIndexPath:indexPath)
-    SignatureCell.heightForSignature(@signatures[indexPath.row], tableView.frame.size.width)
+    SignatureCell.heightForContent(SignatureCell.signatureString(@signatures[indexPath.row]), tableView.frame.size.width)
   end
 
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
     signature = @signatures[indexPath.row]
-    SignatureCell.cellForSignature(signature, inTableView:tableView)
+    SignatureCell.cellFor(signature, inTableView:tableView)
   end
 
   def tableView(tableView, didSelectRowAtIndexPath:indexPath)
