@@ -1,5 +1,5 @@
 class PetitionsController < RefreshableTableViewController
-  attr_accessor :nav_controller, :filters
+  attr_accessor :navController, :filters
 
   def viewDidLoad
     super
@@ -20,15 +20,15 @@ class PetitionsController < RefreshableTableViewController
 
     self.navigationItem.rightBarButtonItem = button
 
-    get_petitions
+    getPetitions
 
-    @callbacks[:infinite_scroll] = lambda { get_petitions }
+    @callbacks[:infinite_scroll] = lambda { getPetitions }
   end
 
   def filter
   end
 
-  def get_petitions
+  def getPetitions
     Dispatch::Queue.concurrent.async do 
       $stdout.puts @cursor.offset
       @cursor.next_page
@@ -62,9 +62,9 @@ class PetitionsController < RefreshableTableViewController
   def tableView(tableView, didSelectRowAtIndexPath:indexPath)
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
-    view_controller = PetitionViewController.alloc.initWithPetition(@petitions[indexPath.row])
-    view_controller.nav_controller = @nav_controller
-    @nav_controller.pushViewController(view_controller, animated: true)
+    viewController = PetitionViewController.alloc.initWithPetition(@petitions[indexPath.row])
+    viewController.navController = @navController
+    @navController.pushViewController(viewController, animated: true)
   end
   
   def reloadRowForPetition(petition)
