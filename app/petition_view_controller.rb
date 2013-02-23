@@ -1,8 +1,8 @@
 class PetitionViewController < UIViewController
-  attr_accessor :nav_controller
+  attr_accessor :navController
 
-  def initWithPetition(petition_object)
-    @petition = petition_object
+  def initWithPetition(petitionObject)
+    @petition = petitionObject
     initWithNibName(nil, bundle: nil)
   end
 
@@ -19,7 +19,7 @@ class PetitionViewController < UIViewController
     @webView.scalesPageToFit = true
     @webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)
     @webView.delegate = self
-    @webView.loadHTMLString(generate_html, baseURL:nil)
+    @webView.loadHTMLString(generateHtml, baseURL:nil)
   end
 
   def webViewDidFinishLoad(webView)
@@ -49,11 +49,11 @@ class PetitionViewController < UIViewController
   end
 
   def signatures
-    view_controller = SignaturesController.alloc.initWithPetition(@petition)
-    @nav_controller.pushViewController(view_controller, animated: true)
+    viewController = SignaturesController.alloc.initWithPetition(@petition)
+    @navController.pushViewController(viewController, animated: true)
   end
 
-  def generate_html
+  def generateHtml
     "<html>
       <head>
         <style>
@@ -64,12 +64,12 @@ class PetitionViewController < UIViewController
       </head>
 
       <body>
-        #{html_body}
+        #{htmlBody}
       </body>
     </html>"
   end
 
-  def html_body
+  def htmlBody
     <<-HTML
       <div id="top">
         <h1>#{@petition.title}</h1>
@@ -79,17 +79,17 @@ class PetitionViewController < UIViewController
         #{@petition.body}
       </div>
 
-      #{response_info}
+      #{responseInfo}
 
-      #{signature_info}
+      #{signatureInfo}
 
-      #{issues_info}
+      #{issuesInfo}
 
       <div class='pad'>&nbsp;</div>
     HTML
   end
 
-  def response_info
+  def responseInfo
     if @petition.response
       "<div id='response'>
         <p><a href='#{@petition.response.url}'>Click here to view the administration's response</a>
@@ -99,7 +99,7 @@ class PetitionViewController < UIViewController
     end
   end
 
-  def issues_info
+  def issuesInfo
     if @petition.issues
       "<div id='issues'>
         <h3>Issues</h3>
@@ -112,7 +112,7 @@ class PetitionViewController < UIViewController
     end
   end
 
-  def signature_info
+  def signatureInfo
     <<-HTML
     <div id="info">
       <table><tr><td>
