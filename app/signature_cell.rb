@@ -18,24 +18,24 @@ class SignatureCell < UITableViewCell
   end
  
   def fillWithSignature(signature, inTableView:tableView)
-    self.textLabel.text = signature_string(signature)
+    self.textLabel.text = signatureString(signature)
 
     self.detailTextLabel.text = "Signed at #{Time.at(signature.created).strftime('%D %T')}"
     self.imageView.image = nil
   end
 
-  def self.signature_string(signature)
+  def self.signatureString(signature)
     "#{signature.name} in ZIP code #{signature.zip}"
   end
 
-  def signature_string(signature)
-    self.class.signature_string(signature)
+  def signatureString(signature)
+    self.class.signatureString(signature)
   end
 
   def self.heightForSignature(signature, width)
     constrain = CGSize.new(width, 1000)
 
-    size = signature_string(signature).sizeWithFont(UIFont.systemFontOfSize(MessageFontSize), constrainedToSize:constrain)
+    size = signatureString(signature).sizeWithFont(UIFont.systemFontOfSize(MessageFontSize), constrainedToSize:constrain)
     [57, size.height + 8].max
   end
 end
